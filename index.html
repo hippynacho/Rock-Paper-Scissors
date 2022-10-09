@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            const computerChoice = Math.floor(Math.random() * choices.length)
+            return choices[computerChoice];
+        }
+
+        const computerSelection = getComputerChoice();
+        // const getPlayerSelection = prompt('Rock, Paper or Scissors?');
+        const playerSelection = "rock";
+        
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "rock" && computerSelection == "rock") {
+                const result = "Tie, play again";
+                console.log(result);
+                return result;
+            }
+
+            if (playerSelection == "rock" && computerSelection == "paper") {
+                const result = "You lose! Paper beats rock";
+                console.log(result);
+                return result;
+            }
+            
+            if (playerSelection == "rock" && computerSelection == "scissors") {
+                const result = "You win! rock beats scissors";
+                console.log(result);
+                return result;
+            }
+        }
+
+        
+            //if (playerSelection === "paper" && computerSelection === "rock") {
+              //  return 'You Win! Paper beats rock';
+           // }
+
+//            if (playerSelection === "paper" && computerSelection === "paper") {
+  //              return 'Tie, play again';
+    //        }
+
+//            if (playerSelection === "paper" && computerSelection === "scissors") {
+  //              return 'You lose! Scissors beats paper'
+    //        }
+//
+  //          if (playerSelection === "scissors" && computerSelection === "scissors") {
+    //            return 'Tie, play again';
+      //      }
+
+        //    if (playerSelection === "scissors" && computerSelection === "rock") {
+          //      return 'You lose! rock beats scissors';
+          //  }
+
+            //if (playerSelection === "scissors" && computerSelection === "paper") {
+              //  return 'You win! scissors beats paper';
+          //  }
+            
+           // else {
+             //   return;
+           // }
+        
+
+    </script>
+</body>
+</html>
