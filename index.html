@@ -8,66 +8,114 @@
 </head>
 <body>
     <script>
+      //Computer makes turn
         function getComputerChoice() {
             const choices = ["rock", "paper", "scissors"];
             const computerChoice = Math.floor(Math.random() * choices.length)
             return choices[computerChoice];
         }
-
-        const computerSelection = getComputerChoice();
-        // const getPlayerSelection = prompt('Rock, Paper or Scissors?');
-        const playerSelection = "rock";
         
+        //Full round of rock, paper, scissors (rps)
         function playRound(playerSelection, computerSelection) {
             if (playerSelection == "rock" && computerSelection == "rock") {
-                const result = "Tie, play again";
-                console.log(result);
+                let result = "tie";
                 return result;
             }
 
             if (playerSelection == "rock" && computerSelection == "paper") {
-                const result = "You lose! Paper beats rock";
-                console.log(result);
+                let result = "lose";
                 return result;
             }
             
             if (playerSelection == "rock" && computerSelection == "scissors") {
-                const result = "You win! rock beats scissors";
-                console.log(result);
+                let result = "win";
                 return result;
             }
+            
+            if (playerSelection == "paper" && computerSelection == "rock") {
+                let result = "win";
+                return result;
+            }
+            
+            if (playerSelection == "paper" && computerSelection == "paper") {
+                let result = "tie";
+                return result;
+            }
+            
+            if (playerSelection == "paper" && computerSelection == "scissors") {
+                let result = "lose";
+                return result;
+            }
+            
+            if (playerSelection == "scissors" && computerSelection == "rock") {
+                let result = "lose";
+                return result;
+            }
+            
+            if (playerSelection == "scissors" && computerSelection == "paper") {
+                let result = "win";
+                return result;
+            }
+            
+            if (playerSelection == "scissors" && computerSelection == "scissors") {
+                let result = "tie";
+                return result;
+            }
+        } 
+              
+        function points() {
+          if (result = "tie") {
+                let point = 0;
+                return point;
+              }
+
+              if (result = "win") {
+                let point = 1;
+                return point;
+              }
+
+              if (result = "lose") {
+                let point = -1;
+                return point;
+              }
         }
 
+        // best of 5 lad
+        function game() {
+          for (let i =0; i < 5; i++) {
+            const computerSelection = getComputerChoice();
+            const playerSelection = prompt('Rock, Paper or Scissors?');
+            const result = playRound(playerSelection, computerSelection);
+            console.log(result)
+        }
+        }
+
+        function winner() {
+          for (let x = 0; x < 5; x++) {
+            for (let i = 0; i < 5; i++) {
+              const flag = game();
+            }
+            for (let j = 0; j < 5; j++) {
+              const ball = game();
+            }
+            const score = game(i) + game(j);
+            return score;
+          }
+          console.log(score);
+        }
+
+        //Can impliment points by changing "result" to "tie, win, lose"
+        // call below function add points
+        // game of 5 means +5 (5W 0L), +3 (3W 2L), +2 (2W 3L), +1 (1W 4L), 0 (0W 5L)
+        // return and console.log(winner) 
         
-            //if (playerSelection === "paper" && computerSelection === "rock") {
-              //  return 'You Win! Paper beats rock';
-           // }
 
-//            if (playerSelection === "paper" && computerSelection === "paper") {
-  //              return 'Tie, play again';
-    //        }
-
-//            if (playerSelection === "paper" && computerSelection === "scissors") {
-  //              return 'You lose! Scissors beats paper'
-    //        }
-//
-  //          if (playerSelection === "scissors" && computerSelection === "scissors") {
-    //            return 'Tie, play again';
-      //      }
-
-        //    if (playerSelection === "scissors" && computerSelection === "rock") {
-          //      return 'You lose! rock beats scissors';
-          //  }
-
-            //if (playerSelection === "scissors" && computerSelection === "paper") {
-              //  return 'You win! scissors beats paper';
-          //  }
-            
-           // else {
-             //   return;
-           // }
+        const play = game();
         
 
-    </script>
+      </script>
 </body>
 </html>
+
+        
+
