@@ -6,113 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
 </head>
+
 <body>
+    <div class="scoreboard">scoreboard</div>
+    <div id="playerScore"></div>
+    <div id="computerScore"></div>
+    <div id="winner"></div>
+    <button id = "rock">Rock</button>
+    <button id = "paper">Paper</button>
+    <button id="scissors">Scissors</button>
+
     <script>
+        const rock = document.querySelector('#rock');
+        const paper = document.querySelector('#paper');
+        const scissors = document.querySelector('#scissors');
+        let playerScore = 0;
+        let computerScore = 0;
+        
       //Computer makes turn
         function getComputerChoice() {
             const choices = ["rock", "paper", "scissors"];
             const computerChoice = Math.floor(Math.random() * choices.length)
             return choices[computerChoice];
         }
+
+        let computerSelection = getComputerChoice();
         
         //Full round of rock, paper, scissors (rps)
         function playRound(playerSelection, computerSelection) {
-            if (playerSelection == "rock" && computerSelection == "rock") {
-                let result = "tie";
-                return result;
+            if (playerSelection === "rock" && computerSelection === "paper") {
+                computerScore++;
+                return 'lose';
+            }
+            
+            if (playerSelection === "rock" && computerSelection === "scissors") {
+                playerScore++;
+                return 'win';
+            }
+            
+            if (playerSelection === "paper" && computerSelection === "rock") {
+                playerScore++;
+                return 'win';
             }
 
-            if (playerSelection == "rock" && computerSelection == "paper") {
-                let result = "lose";
-                return result;
+            if (playerSelection === "paper" && computerSelection === "scissors") {
+                computerScore++;
+                return 'lose';
             }
             
-            if (playerSelection == "rock" && computerSelection == "scissors") {
-                let result = "win";
-                return result;
+            if (playerSelection === "scissors" && computerSelection === "rock") {
+                computerScore++;
+                return 'lose';
             }
             
-            if (playerSelection == "paper" && computerSelection == "rock") {
-                let result = "win";
-                return result;
+            if (playerSelection === "scissors" && computerSelection === "paper") {
+                playerScore++;
+                return 'win';
             }
             
-            if (playerSelection == "paper" && computerSelection == "paper") {
-                let result = "tie";
-                return result;
-            }
-            
-            if (playerSelection == "paper" && computerSelection == "scissors") {
-                let result = "lose";
-                return result;
-            }
-            
-            if (playerSelection == "scissors" && computerSelection == "rock") {
-                let result = "lose";
-                return result;
-            }
-            
-            if (playerSelection == "scissors" && computerSelection == "paper") {
-                let result = "win";
-                return result;
-            }
-            
-            if (playerSelection == "scissors" && computerSelection == "scissors") {
-                let result = "tie";
-                return result;
+            if (playerSelection === computerSelection) {
+                return 'tie';
             }
         } 
-              
-        function points() {
-          if (result = "tie") {
-                let point = 0;
-                return point;
-              }
+        
+        rock.addEventListener('click', () => {
+          playerSelection = 'rock';
+          let result = playRound(playerSelection, computerSelection);
+          updateScore();
+          console.log(result);
+        });
 
-              if (result = "win") {
-                let point = 1;
-                return point;
-              }
+        paper.addEventListener('click', () => {
+          playerSelection = 'paper';
+          let result = playRound(playerSelection, computerSelection);
+          updateScore();
+          console.log(result);
+        });
 
-              if (result = "lose") {
-                let point = -1;
-                return point;
-              }
-        }
+        scissors.addEventListener('click', () => {
+          playerSelection = 'scissors';
+          let result = playRound(playerSelection, computerSelection);
+          updateScore();
+          console.log(result);
+        });
+        
+        function updateScore() {
+          const playerScoreDiv = document.getElementById('playerScore');
+          const computerScoreDiv = document.getElementById('computerScore');
+          const winner = document.querySelector('#winner')
 
-        // best of 5 lad
-        function game() {
-          for (let i =0; i < 5; i++) {
-            const computerSelection = getComputerChoice();
-            const playerSelection = prompt('Rock, Paper or Scissors?');
-            const result = playRound(playerSelection, computerSelection);
-            console.log(result)
-        }
-        }
-
-        function winner() {
-          for (let x = 0; x < 5; x++) {
-            for (let i = 0; i < 5; i++) {
-              const flag = game();
-            }
-            for (let j = 0; j < 5; j++) {
-              const ball = game();
-            }
-            const score = game(i) + game(j);
-            return score;
+          playerScoreDiv.textContent = `Player: ${playerScore}`;
+          if(playerScore == '5') {
+          winner.textContent = "You won!"
           }
-          console.log(score);
+
+          computerScoreDiv.textContent = `Computer: ${computerScore}`;
+          if(computerScore == '5') {
+          winner.textContent = "Computer wins!"
+          }
         }
-
-        //Can impliment points by changing "result" to "tie, win, lose"
-        // call below function add points
-        // game of 5 means +5 (5W 0L), +3 (3W 2L), +2 (2W 3L), +1 (1W 4L), 0 (0W 5L)
-        // return and console.log(winner) 
-        
-
-        const play = game();
-        
-
       </script>
 </body>
 </html>
